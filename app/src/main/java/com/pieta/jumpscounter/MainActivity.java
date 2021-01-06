@@ -16,7 +16,7 @@ import com.pieta.jumpscounter.logic.LinearAccelerationDetector;
 public class MainActivity extends AppCompatActivity {
 
     public enum State {
-        INIT, STOPPED, START, RESUME, PAUSED, SAVE_DATA, SUMMARY, STATS, COUNTER
+        INIT, STOP, START, RESUME, PAUSE, SAVE_DATA, SUMMARY, STATS, COUNTER
     }
 
     private CounterFragment counterFragment;
@@ -25,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
 
     private JumpCollector collector;
     private JumpDetector detector;
+    private BottomNavigationView bottomNavigationView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,12 +46,18 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case START:
                 counterFragment.updateCounter(69);
+                counterFragment.updateButtons(true, false, true, false);
                 break;
-            case PAUSED:
+            case PAUSE:
+                counterFragment.updateButtons(true, true, false, false);
                 break;
             case RESUME:
+                counterFragment.updateButtons(true, false, true, false);
                 break;
-            case STOPPED:
+            case STOP:
+                updateFrame(summaryFragment);
+                bottomNavigationView.setSelectedItemId(R.id.menu_summary);
+                // SAVE DATA
                 break;
             case SAVE_DATA:
                 break;
@@ -74,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
         summaryFragment = new SummaryFragment();
         statsFragment = new StatsFragment();
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottomNavigationView);
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
             switch(item.getItemId()){
                 case R.id.menu_counter:

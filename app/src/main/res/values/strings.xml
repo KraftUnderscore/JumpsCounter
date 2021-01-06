@@ -4,4 +4,7 @@
     <string name="title_summary">Summary</string>
     <string name="title_counter">Counter</string>
     <string name="start_text">Start</string>
+    <string name="pause_text">Pause</string>
+    <string name="resume_text">Resume</string>
+    <string name="stop_text">Stop</string>
 </resources>
