@@ -15,7 +15,7 @@ import com.pieta.jumpscounter.logic.LinearAccelerationDetector;
 
 public class MainActivity extends AppCompatActivity {
 
-    private enum State {
+    public enum State {
         INIT, STOPPED, START, RESUME, PAUSED, SAVE_DATA, SUMMARY, STATS, COUNTER
     }
 
@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
         switchState(State.INIT);
     }
 
-    private void switchState(State state) {
+    public void switchState(State state) {
         switch (state) {
             case INIT:
                 initialize();
@@ -44,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
                 updateFrame(counterFragment);
                 break;
             case START:
+                counterFragment.updateCounter(69);
                 break;
             case PAUSED:
                 break;
@@ -69,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
         detector = new LinearAccelerationDetector(this);
         detector.setCollector(collector);
 
-        counterFragment = new CounterFragment();
+        counterFragment = new CounterFragment(this);
         summaryFragment = new SummaryFragment();
         statsFragment = new StatsFragment();
 

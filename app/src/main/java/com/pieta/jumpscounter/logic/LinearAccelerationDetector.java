@@ -11,7 +11,7 @@ public class LinearAccelerationDetector implements JumpDetector, SensorEventList
     private Sensor sensor;
     private boolean isDetecting = false;
     private float previousX, previousY, previousZ;
-    private final float threshold = 0.05f;
+    private final float threshold = 0.5f;
 
     public LinearAccelerationDetector(Context context) {
         SensorManager manager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);

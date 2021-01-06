@@ -9,26 +9,40 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
+import com.pieta.jumpscounter.MainActivity;
 import com.pieta.jumpscounter.R;
 
-public class CounterFragment extends Fragment {
+public class CounterFragment extends Fragment implements View.OnClickListener {
 
-    private TextView hejo;
+    private TextView counter;
+    private MainActivity mainActivity;
 
-    public CounterFragment() {
+    public CounterFragment(MainActivity activity) {
         super(R.layout.fragment_counter);
+        mainActivity = activity;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        hejo = (TextView) getView().findViewById(R.id.jumps_counter);
-        hejo.setText("ELO MORDO");
+        counter = (TextView) getView().findViewById(R.id.jumps_counter);
+        Button button = (Button) view.findViewById(R.id.stat_button);
+        button.setOnClickListener(this);
     }
 
-    public void Test(int kupa) {
-        hejo.setText("DUPA: " + Integer.toString(kupa));
+    public void updateCounter(int value) {
+        counter.setText(Integer.toString(value));
+    }
+
+    @Override
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.stat_button:
+                mainActivity.switchState(MainActivity.State.START);
+                break;
+        }
     }
 }
