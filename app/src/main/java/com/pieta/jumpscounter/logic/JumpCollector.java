@@ -6,18 +6,22 @@ import com.pieta.jumpscounter.fragments.CounterFragment;
 
 public class JumpCollector {
     private int jumps = 0;
-    private final TextView counter;
+    private final CounterFragment counterFragment;
 
-    public JumpCollector(TextView counter) {
-        this.counter = counter;
+    public JumpCollector(CounterFragment counterFragment) {
+        this.counterFragment = counterFragment;
     }
 
     public void collectJump() {
         jumps += 1;
-        counter.setText(Integer.toString(getJumps()));
+        counterFragment.updateCounter(getJumps());
     }
 
     public int getJumps() {
         return Math.max(0, jumps / 2 - 1);
+    }
+
+    public void reset() {
+        jumps = 0;
     }
 }

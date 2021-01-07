@@ -7,4 +7,7 @@
     <string name="pause_text">Pause</string>
     <string name="resume_text">Resume</string>
     <string name="stop_text">Stop</string>
+    <string name="summary_jumps_label">Jumps:</string>
+    <string name="summary_duration_label">Duration:</string>
+    <string name="summary_avg_label">Avg:</string>
 </resources>
