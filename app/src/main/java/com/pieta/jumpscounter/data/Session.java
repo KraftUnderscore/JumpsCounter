@@ -22,24 +22,20 @@ public class Session {
         this.duration = duration;
     }
 
-    @SuppressLint("DefaultLocale")
     public String getJumpsString() {
-        return String.format("%d", jumps);
+        return String.format(Locale.getDefault(), "%d", jumps);
     }
 
-    @SuppressLint("DefaultLocale")
     public String getDurationString() {
-        return String.format("%.1f sec", duration);
+        return String.format(Locale.getDefault(), "%.1f sec", duration);
     }
 
-    @SuppressLint("DefaultLocale")
     public String getDateString() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
         return format.format(timeStamp);
     }
 
-    @SuppressLint("DefaultLocale")
     public String getAvgString() {
-        return String.format("%.1f jump/sec", jumps/duration);
+        return String.format(Locale.getDefault(), "%.1f jump/sec", jumps/duration);
     }
 }
