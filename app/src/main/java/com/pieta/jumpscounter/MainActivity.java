@@ -78,11 +78,10 @@ public class MainActivity extends AppCompatActivity {
                 float duration = timer.getDuration();
                 currentSession.setDuration(duration);
                 currentSession.setJumps(collector.getJumps());
-                summaryFragment.updateSessionData(currentSession);
+                appDatabase.sessionDao().insert(currentSession);
                 updateFrame(summaryFragment);
                 bottomNavigationView.setVisibility(View.VISIBLE);
                 bottomNavigationView.setSelectedItemId(R.id.menu_summary);
-                appDatabase.sessionDao().insert(currentSession);
                 timer.reset();
                 collector.reset();
                 break;

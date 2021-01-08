@@ -40,7 +40,7 @@ public class Session {
     }
 
     public String getDateString() {
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm", Locale.ENGLISH);
         return format.format(timestamp);
     }
 
