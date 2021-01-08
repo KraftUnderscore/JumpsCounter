@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case RESUME:
                 timer.start();
-                detector.stopDetecting();
+                detector.startDetecting();
                 counterFragment.updateButtons(true, false, true, false);
                 break;
             case STOP:

@@ -7,10 +7,27 @@ import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
 
 public class LinearAccelerationDetector implements JumpDetector, SensorEventListener {
+
+    private class Vector3 {
+        public float x;
+        public float y;
+        public float z;
+
+        public Vector3(float x, float y, float z) {
+            this.x = x;
+            this.y = y;
+            this.z = z;
+        }
+
+        public float magnitude() {
+            return (float) Math.sqrt(x * x + y * y + z * z);
+        }
+    }
+
     private JumpCollector collector;
     private Sensor sensor;
     private boolean isDetecting = false;
-    private float previousX, previousY, previousZ;
+    private Vector3 previousVec;
     private final float threshold = 0.05f;
 
     public LinearAccelerationDetector(Context context) {
@@ -32,6 +49,7 @@ public class LinearAccelerationDetector implements JumpDetector, SensorEventList
     @Override
     public void startDetecting() {
         isDetecting = true;
+        previousVec = new Vector3(0, 0, 0);
     }
 
     @Override
@@ -39,25 +57,19 @@ public class LinearAccelerationDetector implements JumpDetector, SensorEventList
         isDetecting = false;
     }
 
-    private boolean isJump(float x, float y, float z) {
-        return Math.abs(previousX - x) > threshold
-               || Math.abs(previousY - y) > threshold
-               || Math.abs(previousZ - z) > threshold;
+    private boolean isJump(Vector3 currentVec) {
+        return previousVec.magnitude() - currentVec.magnitude() > threshold;
     }
 
     @Override
     public void onSensorChanged(SensorEvent sensorEvent) {
         if(!isDetecting) return;
 
-        float currentX = sensorEvent.values[0];
-        float currentY = sensorEvent.values[1];
-        float currentZ = sensorEvent.values[2];
+        Vector3 currentVec = new Vector3(sensorEvent.values[0], sensorEvent.values[1],
+                                         sensorEvent.values[2]);
 
-        if(isJump(currentX, currentY, currentZ)) updateCollector();
-
-        previousX = currentX;
-        previousY = currentY;
-        previousZ = currentZ;
+        if(isJump(currentVec)) updateCollector();
+        previousVec = currentVec;
     }
 
     @Override
