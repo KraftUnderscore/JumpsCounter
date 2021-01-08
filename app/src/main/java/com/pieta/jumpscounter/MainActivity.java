@@ -2,12 +2,16 @@ package com.pieta.jumpscounter;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
 
 import android.os.Bundle;
+import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.bottomnavigation.LabelVisibilityMode;
+import com.pieta.jumpscounter.data.AppDatabase;
 import com.pieta.jumpscounter.data.Session;
-import com.pieta.jumpscounter.data.Timer;
+import com.pieta.jumpscounter.logic.Timer;
 import com.pieta.jumpscounter.fragments.CounterFragment;
 import com.pieta.jumpscounter.fragments.StatsFragment;
 import com.pieta.jumpscounter.fragments.SummaryFragment;
@@ -30,7 +34,9 @@ public class MainActivity extends AppCompatActivity {
     private JumpCollector collector;
     private JumpDetector detector;
     private Timer timer;
+
     private Session currentSession;
+    private AppDatabase appDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 currentSession = new Session();
                 detector.startDetecting();
                 timer.start();
+                bottomNavigationView.setVisibility(View.INVISIBLE);
                 counterFragment.updateButtons(true, false, true, false);
                 break;
             case PAUSE:
@@ -73,12 +80,15 @@ public class MainActivity extends AppCompatActivity {
                 currentSession.setJumps(collector.getJumps());
                 summaryFragment.updateSessionData(currentSession);
                 updateFrame(summaryFragment);
+                bottomNavigationView.setVisibility(View.VISIBLE);
                 bottomNavigationView.setSelectedItemId(R.id.menu_summary);
-                // SAVE DATA
+                appDatabase.sessionDao().insert(currentSession);
                 timer.reset();
                 collector.reset();
                 break;
             case SUMMARY:
+                Session lastSession = appDatabase.sessionDao().getLastSession();
+                summaryFragment.updateSessionData(lastSession);
                 updateFrame(summaryFragment);
                 break;
             case STATS:
@@ -90,6 +100,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initialize() {
+        appDatabase = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, "database").allowMainThreadQueries().build();
+
         counterFragment = new CounterFragment(this);
         summaryFragment = new SummaryFragment();
         statsFragment = new StatsFragment();

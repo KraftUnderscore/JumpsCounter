@@ -1,17 +1,26 @@
 package com.pieta.jumpscounter.data;
 
-import android.annotation.SuppressLint;
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import java.text.SimpleDateFormat;
 import java.util.Locale;
 
+@Entity
 public class Session {
-    long timeStamp;
+    @PrimaryKey
+    @ColumnInfo(name = "timestamp")
+    long timestamp;
+
+    @ColumnInfo(name = "duration")
     float duration;
+
+    @ColumnInfo(name = "jumps")
     int jumps;
 
     public Session() {
-        this.timeStamp = System.currentTimeMillis();
+        this.timestamp = System.currentTimeMillis();
     }
 
     public void setJumps(int jumps) {
@@ -32,7 +41,7 @@ public class Session {
 
     public String getDateString() {
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.ENGLISH);
-        return format.format(timeStamp);
+        return format.format(timestamp);
     }
 
     public String getAvgString() {

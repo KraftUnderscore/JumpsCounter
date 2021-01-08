@@ -1,4 +1,4 @@
-package com.pieta.jumpscounter.data;
+package com.pieta.jumpscounter.logic;
 
 public class Timer {
     float duration;
