@@ -33,7 +33,7 @@ public class LinearAccelerationDetector implements JumpDetector, SensorEventList
     public LinearAccelerationDetector(Context context) {
         SensorManager manager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         sensor = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        manager.registerListener(this, sensor, manager.SENSOR_DELAY_NORMAL);
+        manager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
     }
 
     @Override

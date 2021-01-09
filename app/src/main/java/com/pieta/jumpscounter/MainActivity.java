@@ -56,39 +56,19 @@ public class MainActivity extends AppCompatActivity {
                 updateFrame(counterFragment);
                 break;
             case START:
-                currentSession = new Session();
-                detector.startDetecting();
-                timer.start();
-                bottomNavigationView.setVisibility(View.INVISIBLE);
-                counterFragment.updateButtons(true, false, true, false);
+                start();
                 break;
             case PAUSE:
-                timer.stop();
-                detector.stopDetecting();
-                counterFragment.updateButtons(true, true, false, false);
+                pause();
                 break;
             case RESUME:
-                timer.start();
-                detector.startDetecting();
-                counterFragment.updateButtons(true, false, true, false);
+                resume();
                 break;
             case STOP:
-                timer.stop();
-                detector.stopDetecting();
-                float duration = timer.getDuration();
-                currentSession.setDuration(duration);
-                currentSession.setJumps(collector.getJumps());
-                appDatabase.sessionDao().insert(currentSession);
-                updateFrame(summaryFragment);
-                bottomNavigationView.setVisibility(View.VISIBLE);
-                bottomNavigationView.setSelectedItemId(R.id.menu_summary);
-                timer.reset();
-                collector.reset();
+                stop();
                 break;
             case SUMMARY:
-                Session lastSession = appDatabase.sessionDao().getLastSession();
-                summaryFragment.updateSessionData(lastSession);
-                updateFrame(summaryFragment);
+                summary();
                 break;
             case STATS:
                 updateFrame(statsFragment);
@@ -96,6 +76,46 @@ public class MainActivity extends AppCompatActivity {
             default:
                 break;
         }
+    }
+
+    private void start() {
+        currentSession = new Session();
+        detector.startDetecting();
+        timer.start();
+        bottomNavigationView.setVisibility(View.INVISIBLE);
+        counterFragment.updateButtons(true, false, true, false);
+    }
+
+    private void pause() {
+        timer.stop();
+        detector.stopDetecting();
+        counterFragment.updateButtons(true, true, false, false);
+    }
+
+    private void summary() {
+        Session lastSession = appDatabase.sessionDao().getLastSession();
+        summaryFragment.updateSessionData(lastSession);
+        updateFrame(summaryFragment);
+    }
+
+    private void resume() {
+        timer.start();
+        detector.startDetecting();
+        counterFragment.updateButtons(true, false, true, false);
+    }
+
+    private void stop() {
+        timer.stop();
+        detector.stopDetecting();
+        float duration = timer.getDuration();
+        currentSession.setDuration(duration);
+        currentSession.setJumps(collector.getJumps());
+        appDatabase.sessionDao().insert(currentSession);
+        updateFrame(summaryFragment);
+        bottomNavigationView.setVisibility(View.VISIBLE);
+        bottomNavigationView.setSelectedItemId(R.id.menu_summary);
+        timer.reset();
+        collector.reset();
     }
 
     private void initialize() {
@@ -112,19 +132,14 @@ public class MainActivity extends AppCompatActivity {
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         bottomNavigationView.setOnNavigationItemSelectedListener(item -> {
-            switch(item.getItemId()){
-                case R.id.menu_counter:
-                    switchState(State.COUNTER);
-//                    detector.startDetecting();
-                    break;
-                case R.id.menu_summary:
-                    switchState(State.SUMMARY);
-//                    detector.stopDetecting();
-                    break;
-                case R.id.menu_stats:
-                    switchState(State.STATS);
-//                    detector.stopDetecting();
-                    break;
+            if(item.getItemId() == R.id.menu_counter) {
+                switchState(State.COUNTER);
+            } else if (item.getItemId() == R.id.menu_summary) {
+                switchState(State.SUMMARY);
+            } else if (item.getItemId() == R.id.menu_stats) {
+                switchState(State.STATS);
+            } else {
+                switchState(State.COUNTER);
             }
             return true;
         });

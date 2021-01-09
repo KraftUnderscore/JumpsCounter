@@ -13,6 +13,8 @@ import android.widget.TextView;
 import com.pieta.jumpscounter.MainActivity;
 import com.pieta.jumpscounter.R;
 
+import java.util.Locale;
+
 public class CounterFragment extends Fragment implements View.OnClickListener {
 
     private final MainActivity mainActivity;
@@ -31,19 +33,32 @@ public class CounterFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        counter = (TextView) getView().findViewById(R.id.jumps_counter);
-        startButton = (Button) view.findViewById(R.id.start_button);
-        pauseButton = (Button) view.findViewById(R.id.pause_button);
-        resumeButton = (Button) view.findViewById(R.id.resume_button);
-        stopButton = (Button) view.findViewById(R.id.stop_button);
+        counter = view.findViewById(R.id.jumps_counter);
+        startButton = view.findViewById(R.id.start_button);
+        pauseButton = view.findViewById(R.id.pause_button);
+        resumeButton = view.findViewById(R.id.resume_button);
+        stopButton = view.findViewById(R.id.stop_button);
         startButton.setOnClickListener(this);
         pauseButton.setOnClickListener(this);
         resumeButton.setOnClickListener(this);
         stopButton.setOnClickListener(this);
     }
 
+    @Override
+    public void onClick(View view) {
+        if(view.getId() == R.id.start_button) {
+            mainActivity.switchState(MainActivity.State.START);
+        } else if(view.getId() == R.id.pause_button) {
+            mainActivity.switchState(MainActivity.State.PAUSE);
+        } else if(view.getId() == R.id.resume_button) {
+            mainActivity.switchState(MainActivity.State.RESUME);
+        } else if(view.getId() == R.id.stop_button) {
+            mainActivity.switchState(MainActivity.State.STOP);
+        }
+    }
+
     public void updateCounter(int value) {
-        counter.setText(Integer.toString(value));
+        counter.setText(String.format(Locale.getDefault(), "%d", value));
     }
 
     public void updateButtons(boolean hideStart, boolean hidePause, boolean hideResume, boolean hideStop) {
@@ -56,23 +71,5 @@ public class CounterFragment extends Fragment implements View.OnClickListener {
     private void toggleButtonVisibility(Button button, boolean isHidden) {
         if(isHidden) button.setVisibility(View.GONE);
         else button.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void onClick(View view) {
-        switch (view.getId()) {
-            case R.id.start_button:
-                mainActivity.switchState(MainActivity.State.START);
-                break;
-            case R.id.pause_button:
-                mainActivity.switchState(MainActivity.State.PAUSE);
-                break;
-            case R.id.resume_button:
-                mainActivity.switchState(MainActivity.State.RESUME);
-                break;
-            case R.id.stop_button:
-                mainActivity.switchState(MainActivity.State.STOP);
-                break;
-        }
     }
 }
