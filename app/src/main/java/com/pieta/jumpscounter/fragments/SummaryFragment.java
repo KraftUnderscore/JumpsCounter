@@ -1,7 +1,9 @@
 package com.pieta.jumpscounter.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -27,10 +29,18 @@ public class SummaryFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        sessionDate = (TextView) view.findViewById(R.id.summary_date_text);
-        sessionJumps = (TextView) view.findViewById(R.id.summary_jumps_text);
-        sessionDuration = (TextView) view.findViewById(R.id.summary_duration_text);
-        sessionAvg = (TextView) view.findViewById(R.id.summary_avg_text);
+        sessionDate = view.findViewById(R.id.summary_date_text);
+        sessionJumps = view.findViewById(R.id.summary_jumps_text);
+        sessionDuration = view.findViewById(R.id.summary_duration_text);
+        sessionAvg = view.findViewById(R.id.summary_avg_text);
+
+        Button shareButton = view.findViewById(R.id.share_button);
+        shareButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                shareSession();
+            }
+        });
 
         updateSummaryText();
     }
@@ -46,7 +56,16 @@ public class SummaryFragment extends Fragment {
         sessionDuration.setText(session.getDurationString());
         sessionAvg.setText(session.getAvgString());
         sessionDate.setText(session.getDateString());
+    }
 
-        session = null;
+    private void shareSession() {
+        Intent shareIntent = new Intent();
+        shareIntent.setAction(Intent.ACTION_SEND);
+        shareIntent.putExtra(Intent.EXTRA_TEXT,
+                             getResources().getString(R.string.share_text, session.jumps));
+        shareIntent.setType("text/plain");
+
+        Intent startIntent = Intent.createChooser(shareIntent, null);
+        startActivity(startIntent);
     }
 }

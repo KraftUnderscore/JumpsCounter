@@ -17,7 +17,7 @@ public class Session {
     float duration;
 
     @ColumnInfo(name = "jumps")
-    int jumps;
+    public int jumps;
 
     public Session() {
         this.timestamp = System.currentTimeMillis();
