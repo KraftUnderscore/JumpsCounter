@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">JumpsCounter</string>
-    <string name="title_stats">Stats</string>
+    <string name="title_stats">Your statistics</string>
     <string name="title_summary">Latest session</string>
     <string name="title_counter">Counter</string>
     <string name="start_text">Start</string>
@@ -14,4 +14,11 @@
     <string name="share_text">
         Today I made %d jumps! I feel great. Check out the app that helped me do it: App
     </string>
+    <string name="stats_longest_title">Longest session:</string>
+    <string name="stats_fastest_title">Fastest jumping:</string>
+    <string name="stats_highest_jumps_title">Most jumps:</string>
+    <string name="stats_week_title">Last 7 days</string>
+    <string name="stats_week_duration">Total duration:</string>
+    <string name="stats_week_jumps">Total jumps:</string>
+    <string name="stats_week_avg">Average jumps:</string>
 </resources>

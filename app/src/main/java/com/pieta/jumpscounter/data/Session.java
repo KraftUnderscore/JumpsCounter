@@ -14,7 +14,7 @@ public class Session {
     long timestamp;
 
     @ColumnInfo(name = "duration")
-    float duration;
+    public float duration;
 
     @ColumnInfo(name = "jumps")
     public int jumps;

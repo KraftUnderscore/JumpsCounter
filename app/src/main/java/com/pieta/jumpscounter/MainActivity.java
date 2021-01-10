@@ -11,6 +11,8 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.pieta.jumpscounter.data.AppDatabase;
 import com.pieta.jumpscounter.data.Session;
+import com.pieta.jumpscounter.data.SessionAccess;
+import com.pieta.jumpscounter.fragments.Stats;
 import com.pieta.jumpscounter.logic.Timer;
 import com.pieta.jumpscounter.fragments.CounterFragment;
 import com.pieta.jumpscounter.fragments.StatsFragment;
@@ -71,11 +73,24 @@ public class MainActivity extends AppCompatActivity {
                 summary();
                 break;
             case STATS:
-                updateFrame(statsFragment);
+                stats();
                 break;
             default:
                 break;
         }
+    }
+
+    private void stats() {
+        SessionAccess sessionAccess = appDatabase.sessionDao();
+        Stats stats = new Stats();
+
+        stats.setMostAvg(sessionAccess.getMostAvg());
+        stats.setMostDuration(sessionAccess.getMostDuration());
+        stats.setMostJumps(sessionAccess.getMostJumps());
+        stats.setWeekData(sessionAccess.getLastWeekSessions());
+
+        statsFragment.updateStatsData(stats);
+        updateFrame(statsFragment);
     }
 
     private void start() {

@@ -19,4 +19,178 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.046" />
 
+    <TextView
+        android:id="@+id/stats_most_jumps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="189dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_title_week"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.598"
+        app:layout_constraintStart_toEndOf="@+id/text_title_most_jumps"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_stats"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/text_title_most_jumps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="60dp"
+        android:layout_marginBottom="189dp"
+        android:text="@string/stats_highest_jumps_title"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_title_week"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.084"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_stats"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/text_title_average"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="56dp"
+        android:text="@string/stats_fastest_title"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_title_week"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_stats"
+        app:layout_constraintVertical_bias="0.99" />
+
+    <TextView
+        android:id="@+id/text_title_longest"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="120dp"
+        android:text="@string/stats_longest_title"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_title_week"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_stats"
+        app:layout_constraintVertical_bias="0.985" />
+
+    <TextView
+        android:id="@+id/stats_most_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="108dp"
+        android:layout_marginBottom="121dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_title_week"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.904"
+        app:layout_constraintStart_toEndOf="@+id/text_title_longest"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_stats"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/text_title_week_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stats_week_duration"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.095"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_week"
+        app:layout_constraintVertical_bias="0.148" />
+
+    <TextView
+        android:id="@+id/text_title_week_avg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stats_week_avg"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_week"
+        app:layout_constraintVertical_bias="0.575" />
+
+    <TextView
+        android:id="@+id/text_title_week_jumps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stats_fastest_title"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.09"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_week"
+        app:layout_constraintVertical_bias="0.36" />
+
+    <TextView
+        android:id="@+id/stats_most_avg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="128dp"
+        android:layout_marginEnd="108dp"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toTopOf="@+id/text_title_week"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.905"
+        app:layout_constraintStart_toEndOf="@+id/text_title_average"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_stats"
+        app:layout_constraintVertical_bias="0.578" />
+
+    <TextView
+        android:id="@+id/stats_week_duration"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toEndOf="@+id/text_title_week_duration"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_week"
+        app:layout_constraintVertical_bias="0.152" />
+
+    <TextView
+        android:id="@+id/stats_week_jumps"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.568"
+        app:layout_constraintStart_toEndOf="@+id/text_title_week_jumps"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_week"
+        app:layout_constraintVertical_bias="0.369" />
+
+    <TextView
+        android:id="@+id/stats_week_avg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="12sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.557"
+        app:layout_constraintStart_toEndOf="@+id/text_title_week_avg"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_week"
+        app:layout_constraintVertical_bias="0.577" />
+
+    <TextView
+        android:id="@+id/text_title_week"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stats_week_title"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.499" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
