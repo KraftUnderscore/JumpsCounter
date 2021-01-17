@@ -13,6 +13,7 @@ import com.pieta.jumpscounter.data.Session;
 import com.pieta.jumpscounter.data.SessionAccess;
 import com.pieta.jumpscounter.fragments.Stats;
 import com.pieta.jumpscounter.logic.DemoAccelerationDetector;
+import com.pieta.jumpscounter.logic.LinearAccelerationDetector;
 import com.pieta.jumpscounter.logic.Timer;
 import com.pieta.jumpscounter.fragments.CounterFragment;
 import com.pieta.jumpscounter.fragments.StatsFragment;

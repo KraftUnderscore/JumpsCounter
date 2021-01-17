@@ -22,6 +22,13 @@ public class LinearAccelerationDetector implements JumpDetector, SensorEventList
         public float magnitude() {
             return (float) Math.sqrt(x * x + y * y + z * z);
         }
+
+        public boolean lengthCheck() {
+            final float mult = 15f;
+            return (x > y * mult && x > z * mult) ||
+                   (y > x * mult && y > z * mult) ||
+                   (z > y * mult && z > x * mult);
+        }
     }
 
     private JumpCollector collector;
@@ -31,7 +38,7 @@ public class LinearAccelerationDetector implements JumpDetector, SensorEventList
     public LinearAccelerationDetector(Context context) {
         SensorManager manager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
         Sensor sensor = manager.getDefaultSensor(Sensor.TYPE_ACCELEROMETER);
-        manager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_NORMAL);
+        manager.registerListener(this, sensor, SensorManager.SENSOR_DELAY_FASTEST);
     }
 
     @Override
@@ -57,9 +64,9 @@ public class LinearAccelerationDetector implements JumpDetector, SensorEventList
 
     private boolean isJump(Vector3 currentVec) {
         float dif = Math.abs(previousVec.magnitude() - currentVec.magnitude());
-        float minThreshold = 0.10f;
-        float maxThreshold = 0.4f;
-        return dif > minThreshold && dif < maxThreshold;
+        float minThreshold = 1.8f;
+        float maxThreshold = 2.3f;
+        return dif > minThreshold && dif < maxThreshold && currentVec.lengthCheck();
     }
 
     @Override
