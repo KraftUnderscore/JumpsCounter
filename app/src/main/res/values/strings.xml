@@ -3,24 +3,29 @@
     <string name="title_stats">Your statistics</string>
     <string name="title_summary">Latest session</string>
     <string name="title_counter">Counter</string>
-    <string name="start_text">Start</string>
-    <string name="pause_text">Pause</string>
-    <string name="resume_text">Resume</string>
-    <string name="stop_text">Stop</string>
-    <string name="summary_jumps_label">Jumps:</string>
-    <string name="summary_duration_label">Duration:</string>
-    <string name="summary_avg_label">Avg:</string>
+    <string name="stats_total_jumps">Total jumps</string>
+    <string name="stats_total_sessions">Sessions count</string>
+    <string name="stats_total_time">Time spent</string>
+    <string name="stats_max_speed">Highest speed</string>
+    <string name="stats_avg_jumps">Average jumps</string>
+
+    <string name="title_best_session">Best session</string>
+    <string name="stats_best_jumps">Jumps</string>
+    <string name="stats_best_time">Time</string>
+
+    <string name="jumps_value">%d jumps</string>
+    <string name="time_ss_value">%.1f sec</string>
+    <string name="time_mm_ss_value">%d min %.1f sec</string>
+    <string name="time_hh_mm_value">%d hr %d min</string>
+    <string name="time_dd_hh_value">%d days %d hr</string>
+    <string name="speed_value">%.1f jump/s</string>
+    <string name="session_value">%d</string>
+
     <string name="share_button_text">Share</string>
     <string name="share_text">
-        Today I made %d jumps! I feel great. Check out the app that helped me do it: App
+        Today I made %d jumps in %.1f seconds! I feel great.
+        Check out the app that helped me do it: JumpsCounter on PlayStore
     </string>
-    <string name="stats_longest_title">Longest session:</string>
-    <string name="stats_fastest_title">Fastest jumping:</string>
-    <string name="stats_highest_jumps_title">Most jumps:</string>
-    <string name="stats_week_title">Last 7 days</string>
-    <string name="stats_week_duration">Total duration:</string>
-    <string name="stats_week_jumps">Total jumps:</string>
-    <string name="stats_week_avg">Average jumps:</string>
 
     <color name="soft_purple">#DCD6F7</color>
     <color name="blue_black">#1D2D44</color>

@@ -8,207 +8,319 @@
 
     <TextView
         android:id="@+id/text_title_stats"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="70sp"
+        android:layout_marginTop="16dp"
+        android:autoSizeMaxTextSize="100sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
         android:text="@string/title_stats"
+        android:textAlignment="center"
+        android:textColor="@color/blue_black"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.046" />
+        app:layout_constraintVertical_bias="0.005" />
 
-    <TextView
-        android:id="@+id/stats_most_jumps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="189dp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/text_title_week"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.598"
-        app:layout_constraintStart_toEndOf="@+id/text_title_most_jumps"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_stats"
-        app:layout_constraintVertical_bias="0.0" />
-
-    <TextView
-        android:id="@+id/text_title_most_jumps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="189dp"
-        android:text="@string/stats_highest_jumps_title"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/text_title_week"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.084"
+    <ImageView
+        android:id="@+id/stats_panel_jumps"
+        android:layout_width="128sp"
+        android:layout_height="128sp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:src="@drawable/ic_round_square"
+        app:layout_constraintEnd_toStartOf="@+id/stats_panel_sessions"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_stats"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toBottomOf="@+id/text_title_stats" />
+
+    <ImageView
+        android:id="@+id/stats_jumps_icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_baseline_accessibility_new_24"
+        app:layout_constraintBottom_toTopOf="@+id/stats_jumps_value"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_jumps"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_jumps"
+        app:layout_constraintTop_toBottomOf="@+id/stats_jumps_label" />
 
     <TextView
-        android:id="@+id/text_title_average"
+        android:id="@+id/stats_jumps_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
-        android:text="@string/stats_fastest_title"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/text_title_week"
+        android:layout_marginTop="8dp"
+        android:textColor="@color/blue_black"
+        android:text="@string/stats_total_jumps"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_jumps"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_jumps"
+        app:layout_constraintTop_toTopOf="@+id/stats_panel_jumps" />
+
+    <TextView
+        android:id="@+id/stats_jumps_value"
+        android:layout_width="wrap_content"
+        android:textColor="@color/blue_black"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/stats_panel_jumps"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_jumps"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_jumps" />
+
+    <ImageView
+        android:id="@+id/stats_panel_sessions"
+        android:layout_width="128sp"
+        android:layout_height="128sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:src="@drawable/ic_round_square"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/stats_panel_jumps"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_stats" />
+
+    <TextView
+        android:id="@+id/stats_sessions_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/stats_total_sessions"
+        android:textColor="@color/blue_black"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_sessions"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_sessions"
+        app:layout_constraintTop_toTopOf="@+id/stats_panel_sessions" />
+
+    <TextView
+        android:id="@+id/stats_sessions_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/blue_black"
+        android:layout_marginBottom="8dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/stats_panel_sessions"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_sessions"
+        app:layout_constraintHorizontal_bias="0.492"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_sessions" />
+
+    <ImageView
+        android:id="@+id/stats_sessions_icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_baseline_emoji_events_24"
+        app:layout_constraintBottom_toTopOf="@+id/stats_sessions_value"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_sessions"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_sessions"
+        app:layout_constraintTop_toBottomOf="@+id/stats_sessions_label" />
+
+    <ImageView
+        android:id="@+id/stats_panel_time"
+        android:layout_width="128sp"
+        android:layout_height="128sp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:src="@drawable/ic_round_square"
+        app:layout_constraintEnd_toStartOf="@+id/stats_panel_speed"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_stats"
-        app:layout_constraintVertical_bias="0.99" />
+        app:layout_constraintTop_toBottomOf="@+id/stats_panel_jumps" />
 
     <TextView
-        android:id="@+id/text_title_longest"
+        android:id="@+id/stats_time_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="120dp"
-        android:text="@string/stats_longest_title"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/text_title_week"
+        android:layout_marginTop="8dp"
+        android:text="@string/stats_total_time"
+        android:textColor="@color/blue_black"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_time"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_time"
+        app:layout_constraintTop_toTopOf="@+id/stats_panel_time" />
+
+    <ImageView
+        android:id="@+id/stats_time_icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_baseline_date_range_24"
+        app:layout_constraintBottom_toTopOf="@+id/stats_time_value"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_time"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_time"
+        app:layout_constraintTop_toBottomOf="@+id/stats_time_label" />
+
+    <TextView
+        android:id="@+id/stats_time_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/blue_black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/stats_panel_time"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_time"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_time" />
+
+    <ImageView
+        android:id="@+id/stats_panel_speed"
+        android:layout_width="128sp"
+        android:layout_height="128sp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="32dp"
+        android:src="@drawable/ic_round_square"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.069"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_stats"
-        app:layout_constraintVertical_bias="0.985" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/stats_panel_time"
+        app:layout_constraintTop_toBottomOf="@+id/stats_panel_sessions" />
 
     <TextView
-        android:id="@+id/stats_most_duration"
+        android:id="@+id/stats_speed_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="108dp"
-        android:layout_marginBottom="121dp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/text_title_week"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.904"
-        app:layout_constraintStart_toEndOf="@+id/text_title_longest"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_stats"
-        app:layout_constraintVertical_bias="0.0" />
+        android:layout_marginTop="8dp"
+        android:text="@string/stats_max_speed"
+        android:textColor="@color/blue_black"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_speed"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_speed"
+        app:layout_constraintTop_toTopOf="@+id/stats_panel_speed" />
 
     <TextView
-        android:id="@+id/text_title_week_duration"
+        android:id="@+id/stats_speed_value"
         android:layout_width="wrap_content"
+        android:textColor="@color/blue_black"
         android:layout_height="wrap_content"
-        android:text="@string/stats_week_duration"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.095"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_week"
-        app:layout_constraintVertical_bias="0.148" />
+        android:layout_marginBottom="8dp"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/stats_panel_speed"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_speed"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_speed" />
+
+    <ImageView
+        android:id="@+id/stats_speed_icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_baseline_speed_24"
+        app:layout_constraintBottom_toTopOf="@+id/stats_speed_value"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_speed"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_speed"
+        app:layout_constraintTop_toBottomOf="@+id/stats_speed_label" />
 
     <TextView
-        android:id="@+id/text_title_week_avg"
+        android:id="@+id/text_title_best_session"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/stats_week_avg"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.091"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_week"
-        app:layout_constraintVertical_bias="0.575" />
-
-    <TextView
-        android:id="@+id/text_title_week_jumps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/stats_fastest_title"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.09"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_week"
-        app:layout_constraintVertical_bias="0.36" />
-
-    <TextView
-        android:id="@+id/stats_most_avg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="128dp"
-        android:layout_marginEnd="108dp"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/text_title_week"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.905"
-        app:layout_constraintStart_toEndOf="@+id/text_title_average"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_stats"
-        app:layout_constraintVertical_bias="0.578" />
-
-    <TextView
-        android:id="@+id/stats_week_duration"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.568"
-        app:layout_constraintStart_toEndOf="@+id/text_title_week_duration"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_week"
-        app:layout_constraintVertical_bias="0.152" />
-
-    <TextView
-        android:id="@+id/stats_week_jumps"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.568"
-        app:layout_constraintStart_toEndOf="@+id/text_title_week_jumps"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_week"
-        app:layout_constraintVertical_bias="0.369" />
-
-    <TextView
-        android:id="@+id/stats_week_avg"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="12sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.557"
-        app:layout_constraintStart_toEndOf="@+id/text_title_week_avg"
-        app:layout_constraintTop_toBottomOf="@+id/text_title_week"
-        app:layout_constraintVertical_bias="0.577" />
-
-    <TextView
-        android:id="@+id/text_title_week"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/stats_week_title"
+        android:layout_marginTop="16dp"
+        android:autoSizeMaxTextSize="40sp"
+        android:autoSizeMinTextSize="10sp"
+        android:autoSizeStepGranularity="2sp"
+        android:autoSizeTextType="uniform"
+        android:text="@string/title_best_session"
+        android:textAlignment="center"
+        android:textColor="@color/blue_black"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.499" />
+        app:layout_constraintTop_toBottomOf="@+id/stats_panel_time" />
 
     <ImageView
-        android:id="@+id/stats_corner_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_corner"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:id="@+id/stats_panel_avg_jumps"
+        android:layout_width="128sp"
+        android:layout_height="128sp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:src="@drawable/ic_round_square"
+        app:layout_constraintEnd_toStartOf="@+id/stats_panel_best_time"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_best_session" />
 
     <ImageView
-        android:id="@+id/stats_corner_right"
+        android:id="@+id/stats_best_jumps_icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_baseline_star_24"
+        app:layout_constraintBottom_toTopOf="@+id/stats_best_jumps_value"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_avg_jumps"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_avg_jumps"
+        app:layout_constraintTop_toBottomOf="@+id/stats_best_jumps_label" />
+
+    <TextView
+        android:id="@+id/stats_best_jumps_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:scaleX="-1"
-        android:src="@drawable/ic_corner"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        android:layout_marginTop="8dp"
+        android:text="@string/stats_best_jumps"
+        android:textColor="@color/blue_black"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_avg_jumps"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_avg_jumps"
+        app:layout_constraintTop_toTopOf="@+id/stats_panel_avg_jumps" />
+
+    <TextView
+        android:id="@+id/stats_best_jumps_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textSize="18sp"
+        android:textColor="@color/blue_black"
+        app:layout_constraintBottom_toBottomOf="@+id/stats_panel_avg_jumps"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_avg_jumps"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_avg_jumps" />
+
+    <ImageView
+        android:id="@+id/stats_panel_best_time"
+        android:layout_width="128sp"
+        android:layout_height="128sp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="32dp"
+        android:src="@drawable/ic_round_square"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/stats_panel_avg_jumps"
+        app:layout_constraintTop_toBottomOf="@+id/text_title_best_session" />
+
+    <ImageView
+        android:id="@+id/stats_best_time_icon"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:src="@drawable/ic_baseline_access_time_24"
+        app:layout_constraintBottom_toTopOf="@+id/stats_best_time_value"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_best_time"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_best_time"
+        app:layout_constraintTop_toBottomOf="@+id/stats_best_time_label" />
+
+    <TextView
+        android:id="@+id/stats_best_time_value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:textColor="@color/blue_black"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="@+id/stats_panel_best_time"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_best_time"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_best_time" />
+
+    <TextView
+        android:id="@+id/stats_best_time_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/stats_best_time"
+        android:textColor="@color/blue_black"
+        app:layout_constraintEnd_toEndOf="@+id/stats_panel_best_time"
+        app:layout_constraintStart_toStartOf="@+id/stats_panel_best_time"
+        app:layout_constraintTop_toTopOf="@+id/stats_panel_best_time" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

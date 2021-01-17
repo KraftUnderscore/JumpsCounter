@@ -20,30 +20,11 @@
         app:layout_constraintTop_toBottomOf="@+id/summary_box_4" />
 
     <ImageView
-        android:id="@+id/summary_corner_left"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_corner"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
-
-    <ImageView
-        android:id="@+id/summary_corner_right"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:scaleX="-1"
-        android:src="@drawable/ic_corner"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
-
-    <ImageView
         android:id="@+id/summary_box_1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="48dp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="48dp"
         android:scaleType="fitXY"
         android:src="@drawable/ic_round_rectangle"
@@ -134,7 +115,7 @@
         android:id="@+id/text_title_summary"
         android:layout_width="0dp"
         android:layout_height="70sp"
-        android:layout_marginTop="64dp"
+        android:layout_marginTop="16dp"
         android:autoSizeMaxTextSize="100sp"
         android:autoSizeMinTextSize="10sp"
         android:autoSizeStepGranularity="2sp"

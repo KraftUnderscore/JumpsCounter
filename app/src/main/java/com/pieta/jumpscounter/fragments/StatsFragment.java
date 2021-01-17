@@ -2,7 +2,6 @@ package com.pieta.jumpscounter.fragments;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,13 +12,13 @@ import com.pieta.jumpscounter.R;
 
 public class StatsFragment extends Fragment {
 
-    private TextView mostJumps;
-    private TextView longestSession;
-    private TextView fastestJumping;
+    private TextView totalJumps;
+    private TextView totalSessions;
+    private TextView totalTime;
+    private TextView totalSpeed;
 
-    private TextView weekDuration;
-    private TextView weekJumps;
-    private TextView weekAvg;
+    private TextView bestJumps;
+    private TextView bestTime;
 
     private Stats stats;
 
@@ -30,12 +29,14 @@ public class StatsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        mostJumps = view.findViewById(R.id.stats_most_jumps);
-        longestSession = view.findViewById(R.id.stats_most_duration);
-        fastestJumping = view.findViewById(R.id.stats_most_avg);
-        weekDuration = view.findViewById(R.id.stats_week_duration);
-        weekJumps = view.findViewById(R.id.stats_week_jumps);
-        weekAvg = view.findViewById(R.id.stats_week_avg);
+
+        totalJumps = view.findViewById(R.id.stats_jumps_value);
+        totalSessions = view.findViewById(R.id.stats_sessions_value);
+        totalTime = view.findViewById(R.id.stats_time_value);
+        totalSpeed = view.findViewById(R.id.stats_speed_value);
+
+        bestJumps = view.findViewById(R.id.stats_best_jumps_value);
+        bestTime = view.findViewById(R.id.stats_best_time_value);
 
         updateStatsText();
     }
@@ -47,12 +48,12 @@ public class StatsFragment extends Fragment {
     private void updateStatsText() {
         if(stats == null) return;
 
-        mostJumps.setText(stats.getMostJumpsString());
-        longestSession.setText(stats.getMostDurationString());
-        fastestJumping.setText(stats.getMostAvgString());
+        totalJumps.setText(stats.getTotalJumpsString());
+        totalSessions.setText(stats.getTotalSessionsString());
+        totalTime.setText(stats.getTotalTimeString());
+        totalSpeed.setText(stats.getTotalSpeedString());
 
-        weekDuration.setText(stats.getWeekDurationString());
-        weekJumps.setText(stats.getWeekJumpString());
-        weekAvg.setText(stats.getWeekAvgString());
+        bestJumps.setText(stats.getBestJumpsString());
+        bestTime.setText(stats.getBestTimeString());
     }
 }

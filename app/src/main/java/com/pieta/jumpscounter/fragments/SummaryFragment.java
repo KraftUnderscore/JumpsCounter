@@ -62,7 +62,7 @@ public class SummaryFragment extends Fragment {
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
         shareIntent.putExtra(Intent.EXTRA_TEXT,
-                             getResources().getString(R.string.share_text, session.jumps));
+                             getResources().getString(R.string.share_text, session.jumps, session.duration));
         shareIntent.setType("text/plain");
 
         Intent startIntent = Intent.createChooser(shareIntent, null);

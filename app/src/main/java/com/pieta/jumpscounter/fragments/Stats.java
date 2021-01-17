@@ -1,61 +1,87 @@
 package com.pieta.jumpscounter.fragments;
 
+import android.content.Context;
+
+import com.pieta.jumpscounter.R;
 import com.pieta.jumpscounter.data.Session;
 
 import java.util.List;
 import java.util.Locale;
 
 public class Stats {
-    private int most_jumps;
-    private int week_jumps;
-    private float most_duration;
-    private float week_duration;
-    private float most_avg;
-    private float week_avg;
 
-    public void setMostJumps(int jumps) {
-        most_jumps = jumps;
+    private int totalJumps;
+    private int totalSessions;
+    private float totalDuration;
+    private float totalSpeed;
+
+    private int bestJumps;
+    private float bestTime;
+
+    private final Context context;
+
+    public Stats(Context context){
+        super();
+        this.context = context;
     }
 
-    public void setMostDuration(float duration) {
-        most_duration = duration;
+    public void setTotalJumps(int totalJumps) {
+        this.totalJumps = totalJumps;
     }
 
-    public void setMostAvg(float avg) {
-        most_avg = avg;
+    public void setTotalSessions(int totalSessions) {
+        this.totalSessions = totalSessions;
     }
 
-    public void setWeekData(List<Session> sessionList) {
-        week_duration = 0f;
-        week_jumps = 0;
-        for (int i = 0; i < sessionList.size(); i++) {
-            week_jumps += sessionList.get(i).jumps;
-            week_duration += sessionList.get(i).duration;
+    public void setTotalDuration(float totalDuration) {
+        this.totalDuration = totalDuration;
+    }
+
+    public void setTotalSpeed(float totalSpeed) {
+        this.totalSpeed = totalSpeed;
+    }
+
+    public void setBestSession(Session session) {
+        bestJumps = session.jumps;
+        bestTime = session.duration;
+    }
+
+    public String getTotalJumpsString() {
+        return String.format(Locale.getDefault(), context.getResources().getString(R.string.jumps_value), totalJumps);
+    }
+
+    public String getTotalSessionsString() {
+        return String.format(Locale.getDefault(), context.getResources().getString(R.string.session_value), totalSessions);
+    }
+
+    public String getTotalTimeString() {
+        return formatTime(totalDuration);
+    }
+
+    public String getTotalSpeedString() {
+        return String.format(Locale.getDefault(), context.getResources().getString(R.string.speed_value), totalSpeed);
+    }
+
+    public String getBestJumpsString() {
+        return String.format(Locale.getDefault(), context.getResources().getString(R.string.jumps_value), bestJumps);
+    }
+
+    public String getBestTimeString() {
+        return formatTime(bestTime);
+    }
+
+    private String formatTime(float duration) {
+        if (duration < 60) {
+            return String.format(Locale.getDefault(), context.getResources().getString(R.string.time_ss_value), duration);
+        } else if (duration < 3600) {
+            int min = (int) (duration / 60);
+            return String.format(Locale.getDefault(), context.getResources().getString(R.string.time_mm_ss_value), min, duration%60);
+        } else if (duration < 86400) {
+            int hr = (int) (duration / 3600);
+            return String.format(Locale.getDefault(), context.getResources().getString(R.string.time_hh_mm_value), hr, (int) (duration%3600 / 60));
+        } else {
+            int days = (int) (duration / 86400);
+            return String.format(Locale.getDefault(), context.getResources().getString(R.string.time_dd_hh_value), days, duration%86400 / 3600);
         }
-        week_avg = week_jumps / week_duration;
-    }
-
-    public String getMostJumpsString() {
-        return String.format(Locale.getDefault(), "%d", most_jumps);
-    }
-
-    public String getMostDurationString() {
-        return String.format(Locale.getDefault(), "%.1f sec", most_duration);
-    }
-
-    public String getMostAvgString() {
-        return String.format(Locale.getDefault(), "%.1f jump/sec", most_avg);
-    }
-
-    public String getWeekJumpString() {
-        return String.format(Locale.getDefault(), "%d", week_jumps);
-    }
-
-    public String getWeekDurationString() {
-        return String.format(Locale.getDefault(), "%f", (week_duration / 60f));
-    }
-
-    public String getWeekAvgString() {
-        return String.format(Locale.getDefault(), "%.1f jump/sec", week_avg);
     }
 }

@@ -13,6 +13,7 @@ import com.pieta.jumpscounter.data.AppDatabase;
 import com.pieta.jumpscounter.data.Session;
 import com.pieta.jumpscounter.data.SessionAccess;
 import com.pieta.jumpscounter.fragments.Stats;
+import com.pieta.jumpscounter.logic.DemoAccelerationDetector;
 import com.pieta.jumpscounter.logic.Timer;
 import com.pieta.jumpscounter.fragments.CounterFragment;
 import com.pieta.jumpscounter.fragments.StatsFragment;
@@ -82,12 +83,13 @@ public class MainActivity extends AppCompatActivity {
 
     private void stats() {
         SessionAccess sessionAccess = appDatabase.sessionDao();
-        Stats stats = new Stats();
+        Stats stats = new Stats(this);
 
-        stats.setMostAvg(sessionAccess.getMostAvg());
-        stats.setMostDuration(sessionAccess.getMostDuration());
-        stats.setMostJumps(sessionAccess.getMostJumps());
-        stats.setWeekData(sessionAccess.getLastWeekSessions());
+        stats.setTotalJumps(sessionAccess.getTotalJumps());
+        stats.setTotalDuration(sessionAccess.getTotalDuration());
+        stats.setTotalSessions(sessionAccess.getTotalSessions());
+        stats.setTotalSpeed(sessionAccess.getHighestSpeed());
+        stats.setBestSession(sessionAccess.getBestSession());
 
         statsFragment.updateStatsData(stats);
         updateFrame(statsFragment);
@@ -142,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
         timer = new Timer();
         collector = new JumpCollector(counterFragment);
-        detector = new LinearAccelerationDetector(this);
+        detector = new DemoAccelerationDetector(this);
         detector.setCollector(collector);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
