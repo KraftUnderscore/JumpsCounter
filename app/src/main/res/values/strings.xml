@@ -7,7 +7,6 @@
     <string name="stats_total_sessions">Sessions count</string>
     <string name="stats_total_time">Time spent</string>
     <string name="stats_max_speed">Highest speed</string>
-    <string name="stats_avg_jumps">Average jumps</string>
 
     <string name="title_best_session">Best session</string>
     <string name="stats_best_jumps">Jumps</string>
@@ -23,7 +22,7 @@
 
     <string name="share_button_text">Share</string>
     <string name="share_text">
-        Today I made %d jumps in %.1f seconds! I feel great.
+        Today I made %d jumps in %.1f minutes! I feel great.
         Check out the app that helped me do it: JumpsCounter on PlayStore
     </string>
 

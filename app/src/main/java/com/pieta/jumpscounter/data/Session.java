@@ -36,7 +36,7 @@ public class Session {
     }
 
     public String getDurationString() {
-        return String.format(Locale.getDefault(), "%.1f sec", duration);
+        return String.format(Locale.getDefault(), "%.1f min", duration/60);
     }
 
     public String getDateString() {

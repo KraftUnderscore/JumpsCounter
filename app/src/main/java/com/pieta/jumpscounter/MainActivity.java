@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.bottomnavigation.LabelVisibilityMode;
 import com.pieta.jumpscounter.data.AppDatabase;
 import com.pieta.jumpscounter.data.Session;
 import com.pieta.jumpscounter.data.SessionAccess;
@@ -20,7 +19,6 @@ import com.pieta.jumpscounter.fragments.StatsFragment;
 import com.pieta.jumpscounter.fragments.SummaryFragment;
 import com.pieta.jumpscounter.logic.JumpCollector;
 import com.pieta.jumpscounter.logic.JumpDetector;
-import com.pieta.jumpscounter.logic.LinearAccelerationDetector;
 
 public class MainActivity extends AppCompatActivity {
 

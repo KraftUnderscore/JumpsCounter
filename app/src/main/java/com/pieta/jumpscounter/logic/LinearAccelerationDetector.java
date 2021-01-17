@@ -27,8 +27,6 @@ public class LinearAccelerationDetector implements JumpDetector, SensorEventList
     private JumpCollector collector;
     private boolean isDetecting = false;
     private Vector3 previousVec;
-    private final float minThreshold = 0.10f;
-    private final float maxThreshold = 0.4f;
 
     public LinearAccelerationDetector(Context context) {
         SensorManager manager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
@@ -59,6 +57,8 @@ public class LinearAccelerationDetector implements JumpDetector, SensorEventList
 
     private boolean isJump(Vector3 currentVec) {
         float dif = Math.abs(previousVec.magnitude() - currentVec.magnitude());
+        float minThreshold = 0.10f;
+        float maxThreshold = 0.4f;
         return dif > minThreshold && dif < maxThreshold;
     }
 
@@ -67,7 +67,7 @@ public class LinearAccelerationDetector implements JumpDetector, SensorEventList
         if(!isDetecting) return;
 
         Vector3 currentVec = new Vector3(sensorEvent.values[0], sensorEvent.values[1],
-                                         sensorEvent.values[2]);
+                sensorEvent.values[2]);
 
         if(isJump(currentVec)) updateCollector();
         previousVec = currentVec;

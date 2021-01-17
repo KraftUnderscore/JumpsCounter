@@ -40,7 +40,6 @@
         app:layout_constraintTop_toBottomOf="@+id/text_title_stats" />
 
     <ImageView
-        android:id="@+id/stats_jumps_icon"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -109,7 +108,6 @@
         app:layout_constraintStart_toStartOf="@+id/stats_panel_sessions" />
 
     <ImageView
-        android:id="@+id/stats_sessions_icon"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -144,7 +142,6 @@
         app:layout_constraintTop_toTopOf="@+id/stats_panel_time" />
 
     <ImageView
-        android:id="@+id/stats_time_icon"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -202,7 +199,6 @@
         app:layout_constraintStart_toStartOf="@+id/stats_panel_speed" />
 
     <ImageView
-        android:id="@+id/stats_speed_icon"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -244,7 +240,6 @@
         app:layout_constraintTop_toBottomOf="@+id/text_title_best_session" />
 
     <ImageView
-        android:id="@+id/stats_best_jumps_icon"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
@@ -290,7 +285,6 @@
         app:layout_constraintTop_toBottomOf="@+id/text_title_best_session" />
 
     <ImageView
-        android:id="@+id/stats_best_time_icon"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"

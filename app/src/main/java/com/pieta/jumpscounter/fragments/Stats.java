@@ -5,7 +5,6 @@ import android.content.Context;
 import com.pieta.jumpscounter.R;
 import com.pieta.jumpscounter.data.Session;
 
-import java.util.List;
 import java.util.Locale;
 
 public class Stats {

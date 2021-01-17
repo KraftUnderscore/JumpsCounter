@@ -4,8 +4,6 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
 
-import java.util.List;
-
 @Dao
 public interface SessionAccess {
     @Query("SELECT * FROM Session ORDER BY timestamp DESC LIMIT 1;")

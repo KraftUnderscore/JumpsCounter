@@ -1,7 +1,5 @@
 package com.pieta.jumpscounter.logic;
 
-import android.widget.TextView;
-
 import com.pieta.jumpscounter.fragments.CounterFragment;
 
 public class JumpCollector {

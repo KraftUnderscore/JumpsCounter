@@ -35,12 +35,7 @@ public class SummaryFragment extends Fragment {
         sessionAvg = view.findViewById(R.id.summary_avg_text);
 
         Button shareButton = view.findViewById(R.id.share_button);
-        shareButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                shareSession();
-            }
-        });
+        shareButton.setOnClickListener(view1 -> shareSession());
 
         updateSummaryText();
     }
@@ -62,7 +57,7 @@ public class SummaryFragment extends Fragment {
         Intent shareIntent = new Intent();
         shareIntent.setAction(Intent.ACTION_SEND);
         shareIntent.putExtra(Intent.EXTRA_TEXT,
-                             getResources().getString(R.string.share_text, session.jumps, session.duration));
+                             getResources().getString(R.string.share_text, session.jumps, session.duration/60));
         shareIntent.setType("text/plain");
 
         Intent startIntent = Intent.createChooser(shareIntent, null);

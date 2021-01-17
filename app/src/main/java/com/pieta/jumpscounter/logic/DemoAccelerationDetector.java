@@ -27,7 +27,6 @@ public class DemoAccelerationDetector implements JumpDetector, SensorEventListen
     private JumpCollector collector;
     private boolean isDetecting = false;
     private Vector3 previousVec;
-    private final float threshold = 0.06f;
 
     public DemoAccelerationDetector(Context context) {
         SensorManager manager = (SensorManager) context.getSystemService(Context.SENSOR_SERVICE);
@@ -58,6 +57,7 @@ public class DemoAccelerationDetector implements JumpDetector, SensorEventListen
 
     private boolean isJump(Vector3 currentVec) {
         float dif = Math.abs(previousVec.magnitude() - currentVec.magnitude());
+        float threshold = 0.06f;
         return dif > threshold;
     }
 
@@ -66,7 +66,7 @@ public class DemoAccelerationDetector implements JumpDetector, SensorEventListen
         if(!isDetecting) return;
 
         Vector3 currentVec = new Vector3(sensorEvent.values[0], sensorEvent.values[1],
-                                         sensorEvent.values[2]);
+                sensorEvent.values[2]);
 
         if(isJump(currentVec)) updateCollector();
         previousVec = currentVec;
