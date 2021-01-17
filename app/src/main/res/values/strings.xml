@@ -21,4 +21,8 @@
     <string name="stats_week_duration">Total duration:</string>
     <string name="stats_week_jumps">Total jumps:</string>
     <string name="stats_week_avg">Average jumps:</string>
+
+    <color name="soft_purple">#DCD6F7</color>
+    <color name="blue_black">#1D2D44</color>
+    <color name="green_yellow">#D9EBBE</color>
 </resources>

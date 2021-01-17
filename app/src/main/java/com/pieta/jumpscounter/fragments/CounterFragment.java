@@ -7,7 +7,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import com.pieta.jumpscounter.MainActivity;
@@ -20,10 +20,10 @@ public class CounterFragment extends Fragment implements View.OnClickListener {
     private final MainActivity mainActivity;
 
     private TextView counter;
-    private Button startButton;
-    private Button pauseButton;
-    private Button resumeButton;
-    private Button stopButton;
+    private ImageButton startButton;
+    private ImageButton pauseButton;
+    private ImageButton resumeButton;
+    private ImageButton stopButton;
 
     public CounterFragment(MainActivity activity) {
         super(R.layout.fragment_counter);
@@ -68,8 +68,8 @@ public class CounterFragment extends Fragment implements View.OnClickListener {
         toggleButtonVisibility(stopButton, hideStop);
     }
 
-    private void toggleButtonVisibility(Button button, boolean isHidden) {
-        if(isHidden) button.setVisibility(View.GONE);
+    private void toggleButtonVisibility(ImageButton button, boolean isHidden) {
+        if(isHidden) button.setVisibility(View.INVISIBLE);
         else button.setVisibility(View.VISIBLE);
     }
 }
